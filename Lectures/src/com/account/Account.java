@@ -4,15 +4,18 @@ public class Account {
 	private int accNo;
 	private String accType;
 	private float accBal;
+	private static int series = 501001;
 	
 	public Account() {
-		this.accNo = 111;
+		this.accNo = series;
+		series++;
 		this.accType = "Current";
 		this.accBal = 11.1f;
 	}
 	
-	public Account(int accNo, String accType, float accBal) {
-		this.accNo = accNo;
+	public Account(String accType, float accBal) {
+		this.accNo = series;
+		series++;
 		this.accType = accType;
 		this.accBal = accBal;
 	}

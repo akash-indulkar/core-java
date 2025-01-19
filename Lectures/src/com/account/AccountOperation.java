@@ -5,7 +5,7 @@ public class AccountOperation {
 	private Account acc;
 	
 	public int createAccount(String accType, float accBal) {
-		acc = new Account((int)Math.ceil(Math.random() * 10000), accType, accBal);
+		acc = new Account(accType, accBal);
 		return acc.getAccNo();
 	}
 	

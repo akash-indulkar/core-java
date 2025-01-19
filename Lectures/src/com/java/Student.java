@@ -4,15 +4,19 @@ public class Student {
 	private int rollNo;
 	private String name;
 	private Date DOB;
+	private static int series = 1;
+	
 	
 	public Student(){
-		this.rollNo = 21;
+		this.rollNo = series;
+		series++;
 		this.name = "Krish";
 		this.DOB = new Date(1,1,2001);
 	}
 	
-	public Student(int rollNo, String name, Date DOB) {
-		this.rollNo = rollNo;
+	public Student(String name, Date DOB) {
+		this.rollNo = series;
+		series++;
 		this.name = name;
 		this.DOB = DOB;
 	}
@@ -54,9 +58,12 @@ public class Student {
 		Student s1 = new Student();
 //		s1.print();
 		System.out.println(s1);
-		Student s2 = new Student(3, "Akash", new Date(12, 10, 2000));
+		Student s2 = new Student( "Akash", new Date(12, 10, 2000));
 //		s2.print();
 		System.out.println(s2);
+		Student s3 = new Student();
+//		s3.print();
+		System.out.println(s3);
 		
 	}
 }
