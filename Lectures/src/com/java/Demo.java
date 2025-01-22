@@ -6,7 +6,7 @@ public class Demo {
 	
 	static {
 		System.out.println("Inside demo static block");
-		val1 = 100;
+//		val1 = 100;
 	}
 	
 	public static void print1() {
@@ -31,9 +31,13 @@ class Another{
 	static {
 		System.out.println("Inside another static block");
 	}
+	public static void print3() {
+		System.out.println("another static method");
+	}
 	public static void main(String[] args) {
 		System.out.println("In another main method");
-//		Demo.print1();
+		print3();
+		Demo.print1();
 //		Demo d1 = new Demo();
 //		d1.print1();
 //		d1.print2();
