@@ -36,8 +36,18 @@ public class Date {
 		return this.yyyy;
 	}
 	
+	@Override
 	public String toString() {
 		return dd + "/" + mm + "/" + yyyy;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Date d = (Date)obj;
+		if(this.dd == d.dd && this.mm == d.mm && this.yyyy == d.yyyy)
+			return true;
+		else
+			return false;
 	}
 	
 	public static void main(String[] args) {

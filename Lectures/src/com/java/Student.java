@@ -50,20 +50,31 @@ public class Student {
 		return "Student roll number is: " + this.rollNo + " || Student name is: " + this.name + " || Student DOB is: " + DOB;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		Student s = (Student)obj;
+		if(this.name.equals(s.name) && this.DOB.equals(s.DOB))
+			return true;
+		else
+			return false;
+	}
 	public void print(){
 		System.out.println("Student roll number is: " + this.rollNo + " || Student name is: " + this.name + " || Student DOB is: " + DOB);
 	}
 	
 	public static void main(String[] args) {
-		Student s1 = new Student();
+//		Student s1 = new Student();
 //		s1.print();
-		System.out.println(s1);
-		Student s2 = new Student( "Akash", new Date(12, 10, 2000));
+//		System.out.println(s1);
+//		Student s2 = new Student( "Akash", new Date(12, 10, 2000));
 //		s2.print();
-		System.out.println(s2);
-		Student s3 = new Student();
+//		System.out.println(s2);
+//		Student s3 = new Student();
 //		s3.print();
-		System.out.println(s3);
-		
+//		System.out.println(s3);
+		Student s4 = new Student("Akash", new Date(12, 10, 2000));
+		Student s5 = new Student("Akash", new Date(12, 10, 2000));
+		System.out.println(s4 == s5);
+		System.out.println(s4.equals(s5));
 	}
 }
