@@ -22,10 +22,21 @@ public class ObjectDemo {
 			return false;
 	}
 	
+	@Override
+	public void finalize() { //non-memory resources cleaning activity
+		System.out.println("Cleaning up the object " + this.i);
+	}
+	
 	public static void main(String[] args) {
-		ObjectDemo od1 = new ObjectDemo(5);
-		ObjectDemo od2 = new ObjectDemo(5);
-		System.out.println(od1 == od2);
-		System.out.println(od1.equals(od2));
+		ObjectDemo od1 = new ObjectDemo(1);
+		ObjectDemo od2 = new ObjectDemo(2);
+//		System.out.println(od1 == od2);
+//		System.out.println(od1.equals(od2));
+		od1 = od2 = null; //reference nullifying
+		
+		ObjectDemo od3 = new ObjectDemo(3);
+		od3 = new ObjectDemo(4); //reference optimization
+		od3 = null; //reference nullifying
+		System.gc(); //requesting garbage collector
 	}
 }

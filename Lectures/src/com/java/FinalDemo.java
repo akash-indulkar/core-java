@@ -30,6 +30,11 @@ final class Helper extends FinalDemo{ // controls inheritance
 //		System.out.println("Hello world");
 //	}
 	
+//	@Override
+//	public void doNothing() {
+//		
+//	}
+	
 	public static void main(String[] args) {
 		final Helper h = new Helper();
 //		h = new Helper(); //reassignment to final variable is not possible

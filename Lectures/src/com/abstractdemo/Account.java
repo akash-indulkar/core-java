@@ -4,7 +4,7 @@ public abstract class Account {
 	int accNo;
 	String accType;
 	float accBalance;
-	static int counter;
+	static int counter = 1;
 	
 	public Account(String accType, float accBalance) {
 		System.out.println("In Account class constructor");
