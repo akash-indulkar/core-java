@@ -1,5 +1,7 @@
 package com.abstractdemo;
 
+import java.util.GregorianCalendar;
+
 public abstract class Shape { //class should also be marked as abstract
 	String name;
 	
@@ -25,6 +27,10 @@ class Circle extends Shape {
 		this.radius = radius;
 	}
 	
+	public void greetCircle() {
+		System.out.println("Hello I'm a Circle!");
+	}
+	
 	@Override //we have to compulsory override abstract method if we are extending abstract class
 	public float calculateArea() {
 //		super.calculateArea(); //cannot use super keyword with abstract method
@@ -47,6 +53,10 @@ class Square extends Shape {
 		this.side = side;
 	}
 	
+	public void greetSquare() {
+		System.out.println("Hello I'm a Square!");
+	}
+	
 	@Override
 	public float calculateArea() {
 		return this.side * this.side;
@@ -62,10 +72,22 @@ class Square extends Shape {
 class Test{
 	public static void main(String[] args) {
 //		Shape s =new Shape("octagon"); //cannot instantiate abstract class / cannot create objects of abstract class / cannot use new keyword with abstract class 
-		Circle c = new Circle("Circle", 6.56f);
-		System.out.println(c.calculateArea());
+//		Circle c = new Circle("Circle", 6.56f);
+//		System.out.println(c.calculateArea());
+//		
+//		Square s = new Square("Square", 8);
+//		System.out.println(s.calculateArea());
 		
-		Square s = new Square("Square", 8);
-		System.out.println(s.calculateArea());
+		
+//		Shape s = new Circle("circle", 3.56f);
+//		System.out.println(s.calculateArea());
+//		((Circle)s).greetCircle();
+//		s = new Square("square", 65.2f);
+//		System.out.println((s.calculateArea()));
+//		((Square) s).greetSquare();
+		
+		Object obj = new Square("square", 62.2f);
+		System.out.println(((Square)obj).calculateArea());
+		((Square)obj).greetSquare();
 	}
 }

@@ -22,6 +22,9 @@ public class Employee {
 		this.salary = salary;
 	}
 	
+	public void greetEmployee() {
+		System.out.println("Hello employee!");
+	}
 	public void print() {
 		System.out.println("Employee ID is: " + this.ID + " Employee name is: " + this.name + " Employee salary is: "+ this.salary);
 	}
@@ -43,6 +46,10 @@ class Manager extends Employee{
 		super(name, salary);
 		System.out.println("in manager parameterized constructor");
 		this.inc  = inc;
+	}
+	
+	public void greetManager() {
+		System.out.println("Hello manager!");
 	}
 	
 	@Override
@@ -83,6 +90,10 @@ class AreaSalesManager extends Manager{
 		this.mobileAllowance = mobileAllowance;
 	}
 	
+	public void greetAreaSalesManager() {
+		System.out.println("Hello area sales manager!");
+	}
+	
 	@Override
 	public void print() {
 		System.out.println("Area sales manager ID is: " + this.ID + " Area sales manager name is: " + this.name + " Area sales manager salary is: "+ this.salary + " Area sales manager incentive is: " + this.inc + " Area sales manager petrol allowance is: " + this.petrolAllowance + " Area sales manager rent allowance is: " + this.rentAllowance + " Area sales manager mobile allowance is: " + this.mobileAllowance);
@@ -94,10 +105,37 @@ class AreaSalesManager extends Manager{
 	}
 	
 	public static void main(String[] args) {
-		AreaSalesManager asm = new AreaSalesManager("Prakash Patil", 120000, 15000, 3500, 7000, 900);
-		asm.print();
-		int pack = asm.calculatePackage();
-		System.out.println(pack);
+//		AreaSalesManager asm = new AreaSalesManager("Prakash Patil", 120000, 15000, 3500, 7000, 900);
+//		asm.print();
+//		int pack = asm.calculatePackage();
+//		System.out.println(pack);
+		
+//		Employee e1 = new Employee();
+//		System.out.println(e1.calculatePackage()); 
+//		Manager e2 = new Manager();
+//		System.out.println(e2.calculatePackage()); 
+//		AreaSalesManager e3 = new AreaSalesManager();
+//		System.out.println(e3.calculatePackage()); 
+		
+//		In the above lines of code(113-118), is not a good  approach to call object specific method as it creates unnecessary memory usage and lefts reachable objects, better approach |>
+		
+		Employee e =(Manager) new Manager("Akash", 68754, 2000); // we can hold child class object with super class reference -> principle of poly-morphism
+		((Manager) e).greetManager(); // to call child class special method, we have to downcast it
+		e = (AreaSalesManager)new AreaSalesManager("Prakash", 68754, 2000, 1000, 500, 20000);
+		System.out.println(e.calculatePackage());
+		((AreaSalesManager) e).greetAreaSalesManager();
+		
+//		It is a better approach(122-126) as it leaves unreachable object for GC, and better memory usage, more details below
+		
+//		Object obj =  new Employee("abc", 123000); // We can also use Object class reference as Object is the cosmic super class to all classes
+//		((Employee)obj).greetEmployee();
+//		System.out.println(((Employee)obj).calculatePackage());
+//		obj =  new Manager("abc", 456000, 456);
+//		((Manager) obj).greetManager(); 
+//		System.out.println(((Manager)obj).calculatePackage());
+//		obj =  new AreaSalesManager("abc", 789000, 789, 789, 789, 78999);
+//		((AreaSalesManager) obj).greetAreaSalesManager();
+//		System.out.println(((AreaSalesManager)obj).calculatePackage());
 	}
 }
 

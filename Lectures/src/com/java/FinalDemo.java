@@ -25,10 +25,10 @@ final class Helper extends FinalDemo{ // controls inheritance
 //		System.out.println("Hello I'm Helper");
 //	}
 	
-//	@Override
-//	public void greet() { //cannot override private methods
-//		System.out.println("Hello world");
-//	}
+	@Override
+	private void greet() { //cannot override private methods
+		System.out.println("Hello world");
+	}
 	
 //	@Override
 //	public void doNothing() {
