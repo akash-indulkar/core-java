@@ -14,18 +14,25 @@ public class DemoMultiThreading extends Thread{ //we must extend Thread class or
 	@Override
 	public void run() { //in run() method we define our task
 		if(Thread.currentThread() == t1) {
-			for(int i=0; i<100; i++) {
-				System.out.println("Java");
-				try {
-					Thread.sleep(500); //sleep() method is used to pause execution of a thread
-				}catch(InterruptedException e) {
-					e.printStackTrace();
+			synchronized(this) {  //for inter-thread communication we use wait(), notify(), notifyAll() methods.
+				for(int i=0; i<100; i++) {
+					if(i==50) {
+						try {
+							wait(); //After calling wait(), Thread releases the lock immediately and go into waiting state						
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+					System.out.println("Java");
 				}
 			}
 		}
 		if(Thread.currentThread() == t2) {
-			for(int i=0; i<100; i++)
-			System.out.println("Rocks");
+			synchronized(this) {
+				for(int i=0; i<100; i++)
+				System.out.println("Rocks");
+				notify(); //After calling notify() Thread notify the waiting thread to get the lock
+			}
 		}
 	}
 	

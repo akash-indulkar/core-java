@@ -6,16 +6,19 @@ public class JointAccount {
 		this.accBal = accBal;
 	}
 	
+//	public synchronized void withdraw(int amount) { //we use synchronized keyword to avoid data inconsistency issues
 	public void withdraw(int amount) {
 		if(amount < accBal) {
-			this.accBal = this.accBal - amount;
+			synchronized(this) { //instead of synchronizing the whole method, we can synchronize specific instructions to improve performance and data consistency is also achieved
+				this.accBal = this.accBal - amount;
+				this.printAccBal();
+			}
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		this.printAccBal();
 	}
 	
 	public void printAccBal() {
