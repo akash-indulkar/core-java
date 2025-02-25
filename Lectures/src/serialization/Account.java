@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Account implements Serializable{ //Serializable - marker interface which makes class eligible to travel through network, basically converts a object into binary stream
 	private int accNo;
 	private String accType;
-	private float accBal;
+	private transient float accBal; //transient keyword is used to skip a data member while serializing, it will ignore original value and use default value while serializing
 	private static int series = 501000;
 	public Account(String accType, float accBal) {
 		super();
