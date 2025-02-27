@@ -1,4 +1,4 @@
-package com.multithreading;
+package InputOutput;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -11,7 +11,7 @@ public class RandomAccessFileDemo {
 		RandomAccessFile RAF = null; //Used to access a file randomly from any pointer
 		BufferedOutputStream BOS = null;
 		try {
-			consoleBackup = consoleBackup = new File("./src/InputOutput/Resources/ConsoleBackup.txt");
+			consoleBackup = new File("./src/InputOutput/Resources/ConsoleBackup.txt");
 			RAF = new RandomAccessFile(consoleBackup, "rw");
 			BOS = new BufferedOutputStream(System.out);
 			RAF.seek(6); //To manipulate file pointer at desired point
@@ -20,6 +20,7 @@ public class RandomAccessFileDemo {
 				BOS.write(i);
 				BOS.flush();
 			}
+			System.out.println();
 //			Read the file in reverse order
 			i = (int) RAF.length()-1;
 			for( ; i>=0; i--) {

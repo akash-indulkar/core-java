@@ -35,7 +35,9 @@ public class Assignment {
 //		discount(al, 10);
 //		Collections.sort(al); //uses compareTo() internally
 //		al.sort((a1, a2) -> (int)(a1.getbPrice() - a2.getbPrice())); //use compare() internally, using lambda way
-		al.sort(new BookComparison()); //this sort method needs Comparator object
+//		al.sort(new BookComparisonByPrice()); //this sort method needs Comparator object
+//		al.sort(new BookComparisonByID()); //this sort method needs Comparator object
+		al.sort(new BookComparisonByName()); //this sort method needs Comparator object
 		System.out.println(al);
 	}
 	
